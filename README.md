@@ -1,2 +1,0 @@
-# MotoScraper
-Motorrad scraper (inserate)
