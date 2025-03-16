@@ -3,16 +3,7 @@ import { getTuttiContent } from '../services/api';
 import { Card, CardContent, CardMedia, Typography, Grid, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
 import './MotorradList.css';
-
-interface Motorrad {
-  id: string; 
-  Titel: string;
-  Link: string;
-  Beschreibung: string;
-  Preis: string;
-  Ort: string;
-  "Bild-URL": string;
-}
+import { Motorrad } from './Motorrad';
 
 const MotorradList: React.FC = () => {
   const [tuttiData, setTuttiData] = useState<Motorrad[]>([]);
@@ -27,11 +18,11 @@ const MotorradList: React.FC = () => {
   }, []);
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom style={{ marginTop: '2rem' }}>
+    <Container className="motorrad-list-container">
+      <Typography variant="h4" className="page-title" gutterBottom>
         Tutti Motorräder
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={4}>
         {tuttiData.map((motorrad) => (
           <Grid item key={motorrad.id} xs={12} sm={6} md={4}>
             <Link to={`/motorrad/${motorrad.id}`} style={{ textDecoration: 'none' }}>

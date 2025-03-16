@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getTuttiContent } from '../services/api';
-import { Typography, Button, Container } from '@mui/material';
+import { Typography, Button, Container, Box } from '@mui/material';
 
 interface Motorrad {
   id: string;
@@ -32,21 +32,20 @@ const MotorradDetail: React.FC = () => {
   }
 
   return (
-    <Container>
-      <div style={{ display: 'flex', marginTop: '2rem' }}>
-        <div style={{ flex: 1, marginRight: '2rem' }}>
+    <Container style={{ marginTop: '2rem' }}>
+      <Box display="flex" flexDirection={{ xs: 'column', md: 'row' }} gap={4}>
+        <Box flex={1}>
           <img
             src={motorrad["Bild-URL"]}
             alt={motorrad.Titel}
-            style={{ width: '100%', borderRadius: '8px' }}
+            style={{ width: '100%', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)' }}
           />
-        </div>
-
-        <div style={{ flex: 2 }}>
-          <Typography variant="h4" gutterBottom>
+        </Box>
+        <Box flex={2}>
+          <Typography variant="h3" gutterBottom>
             {motorrad.Titel}
           </Typography>
-          <Typography variant="h5" color="primary" gutterBottom>
+          <Typography variant="h4" color="primary" gutterBottom>
             {motorrad.Preis}
           </Typography>
           <Typography variant="body1" gutterBottom>
@@ -58,12 +57,14 @@ const MotorradDetail: React.FC = () => {
           <Button
             variant="contained"
             color="primary"
+            size="large"
             onClick={() => window.open(motorrad.Link, '_blank')}
+            style={{ marginTop: '1rem' }}
           >
             Zum Inserat
           </Button>
-        </div>
-      </div>
+        </Box>
+      </Box>
     </Container>
   );
 };
