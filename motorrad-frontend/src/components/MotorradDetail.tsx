@@ -19,11 +19,17 @@ const MotorradDetail: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const tuttiContent = await getTuttiContent();
-      const selectedMotorrad = tuttiContent.find((m: Motorrad) => m.id === id);
-      setMotorrad(selectedMotorrad || null);
+      try {
+        const tuttiContent = await getTuttiContent();
+        console.log("Tutti Content:", tuttiContent[0]); 
+        const selectedMotorrad = tuttiContent.find((m: Motorrad) => m.id.toString() === id);
+        console.log("teststst",selectedMotorrad, id)
+        setMotorrad(selectedMotorrad || null);
+      } catch (error) {
+        console.error("Fehler beim Abrufen der Daten:", error);
+      }
     };
-
+  
     fetchData();
   }, [id]);
 

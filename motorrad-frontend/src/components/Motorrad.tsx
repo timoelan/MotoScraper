@@ -7,4 +7,5 @@ export interface Motorrad {
   Preis: string;
   Ort: string;
   "Bild-URL": string;
+  "Hinzugefügt am": string;
 }
